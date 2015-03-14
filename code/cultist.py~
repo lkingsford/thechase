@@ -1,9 +1,0 @@
-import character
-
-CULTIST_HEALTH = 2
-CULTIST_ATTACK = 1
-
-class Cultist(character.Character):
-    def __init__(self, location, game_map):	
-        super().__init__(location, game_map, "Cultist", CULTIST_HEALTH)
-        self.attack_strength = CULTIST_ATTACK

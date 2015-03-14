@@ -55,19 +55,6 @@ class Game(state.State):
         # Create the player character
         self.player_character = \
             player_character.PlayerCharacter((20, 5), self.game_map)
-            
-        # Remove any trees or monsters near the player character
-        for ix in range(-18 ,22):
-            for iy in range(3, 7):
-                self.game_map.inner_map[ix][iy].walkable_ = True
-                self.game_map.inner_map[ix][iy].wall_tile_ = None
-                monsters_too_close = [i for i in self.game_map.characters \
-                                      if i.team != self.player_character.team \
-                                      and i.location == (ix, iy)] 
-                for i in monsters_too_close:
-                    self.game_map.characters.remove(i)
-         
-        
          
         # Whether the next turn is ready to update
         self.next_turn = False 
@@ -394,7 +381,8 @@ class Game(state.State):
         if self.player_character.game_end_state == GameEndState.dead:
             self.state = self.show_story(get_asset("DeadStory"))
             self.game_done = True
-        if self.player_character.game_end_state == GameEndState.consumed:
+        if ((self.player_character.game_end_state == GameEndState.consumed) or
+            (self.player_character.location[0] <= 0)):
             self.state = self.show_story(get_asset("ConsumedStory"))
             self.game_done = True            
         if self.player_character.game_end_state == GameEndState.won_killed:
