@@ -20,12 +20,12 @@ available from http://www.fraggedempire.com/.
 
 #GITHUB
 
-The project is available on GitHub at [https://github.com/lkingsford/thechase]
+The project is available on GitHub at https://github.com/lkingsford/thechase
 
 #ITCH.IO
 
 The latest version of the project is available at 
-[http://nerdygentleman.itch.io/the-chase]
+http://nerdygentleman.itch.io/the-chase
 
 
 #RUNNING THE GAME

@@ -1,0 +1,74 @@
+import character
+
+from character import Action
+
+from enum import Enum
+
+class PlayerCharacter(character.Character):
+    """The player character"""
+    def __init__(self, location, game_map):
+        super().__init__(location,
+            game_map,
+            "Hero",
+            health = 30,
+            team = 1);
+        self.next_action = None;
+     
+     
+    def update(self):
+        """ Make character move/perform current action
+            Keyword arguments:
+                none
+            Returns:
+                none
+        """
+        if self.next_action == None:
+            return
+
+        if 0 <= self.next_action.value <= 8:
+            self.move(self.next_action)
+        
+        if self.next_action == Action.shoot:
+            self.shoot()
+        
+        if self.next_action == Action.teleport:
+            self.teleport()
+        
+        self.next_action = None
+        
+      
+    def do(self, action):
+        """Perform an action
+            Keyword arguments:
+                action - action to perform
+            Returns:
+                none
+        """
+        self.next_action = action
+        
+     
+    def shoot(self):
+        """ Shoot directly in front of player 
+            Shooting removes all health from an enemy
+        """
+        
+        for fx in range(self.location[0], self.game_map.active_size[0]):
+            enemy_hit = [i for i in self.game_map.characters \
+                         if i.location == (fx, self.location[1]) and \
+                         i.team != self.team ]
+            if len(enemy_hit) > 0:
+                for i in enemy_hit:
+                    i.attacked(i.health)
+                break;
+  
+    def teleport(self):
+        """ Teleport forward 2 spaces, and keep going forward if blocked by
+            trees
+        """
+        
+        desired_location = (self.location[0] + 1, self.location[1])
+        self.game_map.scroll()
+        self.game_map.scroll()
+        while (not self.game_map.walkable(desired_location)):
+            self.game_map.scroll()
+        self.location = desired_location[0], self.location[1]        

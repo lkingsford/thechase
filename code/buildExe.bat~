@@ -1,0 +1,3 @@
+@echo off
+rem This script builds the exes for The Chase
+python setup.py build --target-dir ..\dist

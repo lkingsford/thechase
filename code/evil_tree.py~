@@ -1,0 +1,40 @@
+import character
+import random
+
+EVIL_TREE_HEALTH = 4
+EVIL_TREE_ATTACK = 2
+EVIL_TREE_RANGE = 3
+
+class EvilTree(character.Character):
+    """This is what happens when TrEeS cOmE aLiVe!
+    """
+    
+    def __init__(self, location, game_map):	
+        assets = [
+            ("Tree1", "Eviltree1"),
+            ("Tree2", "Eviltree2"),
+            ("Tree3", "Eviltree3"),
+            ("Tree4", "Eviltree4"),
+            ("Tree5", "Eviltree5"),
+            ("Tree6", "Eviltree6")]
+        self.tree_asset = random.choice(assets)
+        super().__init__(location, game_map, self.tree_asset[0],
+            EVIL_TREE_HEALTH, EVIL_TREE_ATTACK)
+        self.active = False
+        
+    
+    def update(self):        
+        # Activate tree if enemy gets close
+        enemies = [i for i in self.game_map.characters if i.team != self.team]
+        for i in enemies:
+            # This may not be the best way to check for range
+            if (abs(i.location[0] - self.location[0]) <= EVIL_TREE_RANGE) and \
+                (abs(i.location[1] - self.location[1]) <= EVIL_TREE_RANGE):
+                self.activate()
+                
+        super().update();
+     
+     
+    def activate(self):
+        self.asset = self.tree_asset[1]
+        self.active = True

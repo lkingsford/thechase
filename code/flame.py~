@@ -1,0 +1,12 @@
+import character
+
+FLAME_HEALTH = 1
+FLAME_ATTACK = 2
+
+class Flame(character.Character):
+    def __init__(self, location, game_map):	
+        super().__init__(location,
+            game_map,
+            "Flame",
+            FLAME_HEALTH,
+            FLAME_ATTACK)

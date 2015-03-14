@@ -1,0 +1,34 @@
+Config File:
+
+HERO_HEALTH    			The starting health of the player
+START_BULLETS			The amount of bullets the player starts with
+START_TELEPORTS			The amount of teleports the player starts with
+START_INITIAL_XP_REQUIRED	The amount of XP for the first level
+				XP given is monster health + attack
+XP_LEVELLING_MULTIPLIER		The amount that XP required is multiplied each
+				level
+MAX_HEALTH_PER_LEVEL		The amount that the characters health goes up
+				each level
+TILE_WIDTH			Width of tiles in pixels
+TILE_HEIGHT			Height of tiles in pixels 
+GAME_DISTANCE			Distance to win the game
+BOSS_DISTANCE			Distance from the start of the end zone that
+				the boss is
+END_ZONE			Length of end zone
+END_ZONE_START_THICK		Thickness of corrodor at start of endzone
+MAP_WIDTH			Amount of tiles shown on the screen width
+MAP_HEIGHT			Amount of tiles shown on the screen height
+ACTIVE_WIDTH			Should be the same as MAP_WIDTH
+ACTIVE_HEIGHT			Should be the same as MAP_HEIGHT
+EXTRA_MAP_WIDTH			Don't change right now
+HEALTH_PIP_OFFSET		The vertical offset in pixels of enemy health
+FLAME_HEALTH			Health of flame enemy
+FLAME_ATTACK			Attack of flame enemy
+SPECTRE_HEALTH			Health of spectre
+SPECTRE_ATTACK			Attack of spectre
+CULTIST_HEALTH			Health of cultist
+CULTIST_ATTACK			Attack of cultist
+EVIL_TREE_HEALTH		Health of Evil Tree
+EVIL_TREE_ATTACK		Attack of Evil Tree
+EVIL_TREE_RANGE			Range in which Evil Tree activates
+PROGESS_OFFSET			Amount down in pixels the progress bar is
